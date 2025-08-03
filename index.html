@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don't F**k with Cats: A 3-Minute Story</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23333" stroke-width="0.5" opacity="0.3"/></svg>');
+            z-index: -1;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .story-text {
+            background: rgba(0,0,0,0.6);
+            padding: 40px;
+            border-left: 4px solid #666;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+
+        .story-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 98px,
+                rgba(255,255,255,0.03) 100px
+            );
+            pointer-events: none;
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .visual-section {
+            position: relative;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .investigation-board {
+            width: 100%;
+            height: 400px;
+            background: #2a2a2a;
+            position: relative;
+            border: 2px solid #444;
+            overflow: hidden;
+        }
+
+        .investigation-board::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 20px),
+                repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 20px);
+        }
+
+        .evidence-item {
+            position: absolute;
+            background: #f0f0f0;
+            color: #333;
+            padding: 8px;
+            font-size: 0.8rem;
+            transform: rotate(var(--rotation));
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            border: 1px solid #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .evidence-item:hover {
+            transform: rotate(0deg) scale(1.1);
+            z-index: 10;
+        }
+
+        .evidence-item:nth-child(1) { --rotation: -15deg; top: 50px; left: 30px; width: 120px; }
+        .evidence-item:nth-child(2) { --rotation: 10deg; top: 80px; right: 50px; width: 100px; }
+        .evidence-item:nth-child(3) { --rotation: -8deg; bottom: 100px; left: 80px; width: 140px; }
+        .evidence-item:nth-child(4) { --rotation: 12deg; bottom: 60px; right: 30px; width: 110px; }
+        .evidence-item:nth-child(5) { --rotation: -20deg; top: 150px; left: 50%; transform: translateX(-50%) rotate(-20deg); width: 130px; }
+
+        .photos-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .photo-placeholder {
+            aspect-ratio: 1;
+            background: #333;
+            border: 2px solid #555;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60%;
+            height: 60%;
+            background: rgba(255,255,255,0.1);
+            transform: translate(-50%, -50%);
+            clip-path: polygon(30% 0%, 0% 30%, 0% 70%, 30% 100%, 70% 100%, 100% 70%, 100% 30%, 70% 0%);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(45deg, #444, #666);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid #777;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(45deg, #555, #777);
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .warning-text {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 50px,
+                rgba(255,255,255,0.1) 52px
+            );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .story-text {
+                padding: 20px;
+            }
+            
+            .visual-section {
+                height: 300px;
+            }
+            
+            .investigation-board {
+                height: 250px;
+            }
+            
+            .photos-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .glitch {
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-2px); }
+            40% { transform: translateX(2px); }
+            60% { transform: translateX(-1px); }
+            80% { transform: translateX(1px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="title glitch">Don't F**k with Cats</h1>
+        </header>
+
+        <main class="main-content">
+            <div class="story-text">
+                <p>In December 2010, a disturbing video appeared online that would spark one of the internet's most notorious manhunts. The footage showed a hooded figure suffocating two kittens with a vacuum cleaner bag.</p>
+                
+                <p>What the perpetrator didn't expect was the fury of cat lovers worldwide—and their determination to bring him to justice.</p>
+            </div>
+
+            <div class="visual-section">
+                <div class="investigation-board">
+                    <div class="evidence-item">VIDEO EVIDENCE<br>Dec 2010</div>
+                    <div class="evidence-item">SUSPECT<br>UNKNOWN</div>
+                    <div class="evidence-item">INTERNET SEARCH<br>WORLDWIDE</div>
+                    <div class="evidence-item">CAT LOVERS<br>UNITE</div>
+                    <div class="evidence-item">MANHUNT<br>BEGINS</div>
+                </div>
+                
+                <div class="photos-section">
+                    <div class="photo-placeholder"></div>
+                    <div class="photo-placeholder"></div>
+                    <div class="photo-placeholder"></div>
+                </div>
+            </div>
+        </main>
+
+        <section class="cta-section">
+            <a href="#" class="cta-button" onclick="nextPage()">Begin Investigation</a>
+            <p class="warning-text">Warning: This story contains disturbing content</p>
+        </section>
+    </div>
+
+    <script>
+        function nextPage() {
+            // Placeholder for navigation to next page
+            alert('Next page functionality would be implemented here');
+        }
+
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const evidenceItems = document.querySelectorAll('.evidence-item');
+            
+            evidenceItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'rotate(0deg) scale(1.2)';
+                    this.style.zIndex = '20';
+                    this.style.background = '#ffeb3b';
+                    this.style.color = '#000';
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.zIndex = '';
+                        this.style.background = '';
+                        this.style.color = '';
+                    }, 2000);
+                });
+            });
+
+            // Add typing effect to title
+            const title = document.querySelector('.title');
+            const text = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const typeInterval = setInterval(() => {
+                title.textContent += text[i];
+                i++;
+                if (i >= text.length) {
+                    clearInterval(typeInterval);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>

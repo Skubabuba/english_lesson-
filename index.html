@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Don't F**k with Cats: A 3-Minute Story</title>
+    <title>Don't F**k with Cats: Internet's Most Notorious Manhunt</title>
     <style>
         * {
             margin: 0;
@@ -12,113 +12,216 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-            color: #e0e0e0;
+            font-family: 'Times New Roman', serif;
+            background: #f8f5f0;
+            color: #1a1a1a;
             min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 20px;
-            position: relative;
+            background: 
+                /* Старая газетная бумага */
+                radial-gradient(circle at 25% 25%, rgba(139,69,19,0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(160,82,45,0.04) 0%, transparent 40%),
+                linear-gradient(180deg, #f8f5f0 0%, #f5f2eb 100%);
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
+        .newspaper-clipping {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #faf8f3;
+            border: 1px solid #d4c5a3;
+            box-shadow: 
+                3px 3px 8px rgba(0,0,0,0.2),
+                inset 0 0 0 1px rgba(139,69,19,0.1);
+            transform: rotate(-1deg);
+            padding: 40px;
             position: relative;
+            
+            /* Рваные края вырезки */
+            clip-path: polygon(
+                2% 1%, 5% 3%, 8% 1%, 12% 4%, 15% 2%, 18% 5%, 22% 3%, 25% 6%, 
+                28% 3%, 32% 5%, 35% 2%, 38% 4%, 42% 1%, 45% 3%, 48% 1%, 52% 4%, 
+                55% 2%, 58% 5%, 62% 3%, 65% 6%, 68% 2%, 72% 4%, 75% 1%, 78% 3%, 
+                82% 1%, 85% 4%, 88% 2%, 92% 5%, 95% 3%, 98% 6%, 99% 10%, 
+                98% 15%, 99% 20%, 97% 25%, 99% 30%, 98% 35%, 99% 40%, 97% 45%, 
+                98% 50%, 99% 55%, 97% 60%, 99% 65%, 98% 70%, 99% 75%, 97% 80%, 
+                99% 85%, 98% 90%, 96% 95%, 92% 97%, 88% 99%, 84% 97%, 80% 98%, 
+                76% 96%, 72% 98%, 68% 97%, 64% 99%, 60% 96%, 56% 98%, 52% 97%, 
+                48% 99%, 44% 96%, 40% 98%, 36% 97%, 32% 99%, 28% 96%, 24% 98%, 
+                20% 97%, 16% 99%, 12% 96%, 8% 98%, 4% 97%, 1% 95%, 2% 90%, 
+                1% 85%, 3% 80%, 1% 75%, 2% 70%, 1% 65%, 3% 60%, 1% 55%, 
+                2% 50%, 1% 45%, 3% 40%, 1% 35%, 2% 30%, 1% 25%, 3% 20%, 
+                1% 15%, 2% 10%, 1% 5%
+            );
         }
 
-        .title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-            letter-spacing: -1px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .title::before {
+        .newspaper-clipping::before {
             content: '';
             position: absolute;
             top: -10px;
             left: -10px;
             right: -10px;
             bottom: -10px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23333" stroke-width="0.5" opacity="0.3"/></svg>');
+            background: rgba(139,69,19,0.1);
+            filter: blur(15px);
             z-index: -1;
         }
 
-        .subtitle {
+        .newspaper-header {
+            text-align: center;
+            border-bottom: 3px double #1a1a1a;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .newspaper-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .date-line {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .headline {
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin: 30px 0;
+            line-height: 1.1;
+            text-transform: uppercase;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            letter-spacing: 1px;
+            
+            /* Жирный газетный стиль */
+            text-shadow: 
+                1px 1px 0 rgba(0,0,0,0.3),
+                2px 2px 0 rgba(0,0,0,0.2);
+        }
+
+        .subheadline {
             font-size: 1.2rem;
-            color: #888;
-            margin-bottom: 40px;
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: #444;
+            font-weight: normal;
+        }
+
+        .article-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .article-text {
+            column-count: 1;
+            column-gap: 20px;
+            text-align: justify;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .photo-box {
+            border: 2px solid #1a1a1a;
+            padding: 10px;
+            background: #fff;
+            position: relative;
+            height: fit-content;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            background: 
+                repeating-linear-gradient(45deg, #e0e0e0, #e0e0e0 10px, #d0d0d0 10px, #d0d0d0 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+            text-align: center;
+            filter: grayscale(100%) contrast(1.2) brightness(0.9);
+        }
+
+        .photo-caption {
+            font-size: 0.85rem;
+            font-style: italic;
+            text-align: center;
+            color: #555;
+        }
+
+        .article-text p {
+            margin-bottom: 15px;
+            text-indent: 20px;
+        }
+
+        .article-text p:first-child {
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-indent: 0;
+        }
+
+        .article-text p:first-child::first-letter {
+            font-size: 3rem;
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            padding: 0;
+        }
+
+
+
+        .bottom-section {
+            border-top: 2px solid #1a1a1a;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .continue-reading {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
+            border: 3px solid #1a1a1a;
+            transition: all 0.3s ease;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="12" cy="12" r="8" fill="none" stroke="black" stroke-width="2"/><circle cx="12" cy="12" r="6" fill="none" stroke="white" stroke-width="1"/><line x1="20" y1="20" x2="28" y2="28" stroke="black" stroke-width="3"/><line x1="20" y1="20" x2="28" y2="28" stroke="white" stroke-width="1"/></svg>') 16 16, pointer;
         }
 
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 60px;
+        .continue-reading:hover {
+            background: #fff;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
-        .story-text {
-            background: rgba(0,0,0,0.6);
-            padding: 40px;
-            border-left: 4px solid #666;
-            position: relative;
-            backdrop-filter: blur(5px);
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: rgba(255,255,255,0.5);
         }
 
-        .story-text::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 98px,
-                rgba(255,255,255,0.03) 100px
-            );
-            pointer-events: none;
-        }
-
-        .story-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        .visual-section {
-            position: relative;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .investigation-board {
-            width: 100%;
-            height: 400px;
-            background: #2a2a2a;
-            position: relative;
-            border: 2px solid #444;
-            overflow: hidden;
-        }
-
-        .investigation-board::before {
+        /* Добавляем пятна и старение */
+        .newspaper-clipping::after {
             content: '';
             position: absolute;
             top: 0;
@@ -126,241 +229,67 @@
             right: 0;
             bottom: 0;
             background: 
-                repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(255,255,255,0.05) 20px),
-                repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(255,255,255,0.05) 20px);
-        }
-
-        .evidence-item {
-            position: absolute;
-            background: #f0f0f0;
-            color: #333;
-            padding: 8px;
-            font-size: 0.8rem;
-            transform: rotate(var(--rotation));
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-            border: 1px solid #ccc;
-            transition: all 0.3s ease;
-        }
-
-        .evidence-item:hover {
-            transform: rotate(0deg) scale(1.1);
-            z-index: 10;
-        }
-
-        .evidence-item:nth-child(1) { --rotation: -15deg; top: 50px; left: 30px; width: 120px; }
-        .evidence-item:nth-child(2) { --rotation: 10deg; top: 80px; right: 50px; width: 100px; }
-        .evidence-item:nth-child(3) { --rotation: -8deg; bottom: 100px; left: 80px; width: 140px; }
-        .evidence-item:nth-child(4) { --rotation: 12deg; bottom: 60px; right: 30px; width: 110px; }
-        .evidence-item:nth-child(5) { --rotation: -20deg; top: 150px; left: 50%; transform: translateX(-50%) rotate(-20deg); width: 130px; }
-
-        .photos-section {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .photo-placeholder {
-            aspect-ratio: 1;
-            background: #333;
-            border: 2px solid #555;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .photo-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 60%;
-            height: 60%;
-            background: rgba(255,255,255,0.1);
-            transform: translate(-50%, -50%);
-            clip-path: polygon(30% 0%, 0% 30%, 0% 70%, 30% 100%, 70% 100%, 100% 70%, 100% 30%, 70% 0%);
-        }
-
-        .cta-section {
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 20px 50px;
-            background: linear-gradient(45deg, #444, #666);
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 2px solid #777;
-            position: relative;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(45deg, #555, #777);
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .warning-text {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #888;
-            font-style: italic;
-        }
-
-        .background-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 50px,
-                rgba(255,255,255,0.1) 52px
-            );
+                radial-gradient(ellipse at 80% 20%, rgba(139,69,19,0.1) 0%, transparent 30%),
+                radial-gradient(ellipse at 20% 80%, rgba(160,82,45,0.08) 0%, transparent 25%),
+                radial-gradient(ellipse at 60% 60%, rgba(205,133,63,0.06) 0%, transparent 35%);
             pointer-events: none;
-            z-index: -1;
         }
 
         @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .story-text {
+            .newspaper-clipping {
+                margin: 10px;
                 padding: 20px;
+                transform: rotate(0deg);
             }
             
-            .visual-section {
-                height: 300px;
+            .article-content {
+                grid-template-columns: 1fr;
             }
-            
-            .investigation-board {
-                height: 250px;
-            }
-            
-            .photos-section {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .glitch {
-            animation: glitch 2s infinite;
-        }
-
-        @keyframes glitch {
-            0% { transform: translateX(0); }
-            20% { transform: translateX(-2px); }
-            40% { transform: translateX(2px); }
-            60% { transform: translateX(-1px); }
-            80% { transform: translateX(1px); }
-            100% { transform: translateX(0); }
         }
     </style>
 </head>
 <body>
-    <div class="background-pattern"></div>
-    
-    <div class="container">
-        <header class="header">
-            <h1 class="title glitch">Don't F**k with Cats</h1>
+    <div class="newspaper-clipping">
+        <header class="newspaper-header">
+            <div class="newspaper-name">The Digital Tribune</div>
+            <div class="date-line">December 2010 Special Investigation</div>
         </header>
 
-        <main class="main-content">
-            <div class="story-text">
-                <p>In December 2010, a disturbing video appeared online that would spark one of the internet's most notorious manhunts. The footage showed a hooded figure suffocating two kittens with a vacuum cleaner bag.</p>
+        <h1 class="headline">Don't F**k with Cats</h1>
+        <h2 class="subheadline">Internet Vigilantes Launch Worldwide Manhunt After Disturbing Video Surfaces</h2>
+
+        <div class="article-content">
+            <div class="article-text">
+                <p>In December 2010, a disturbing video appeared online that would spark one of the internet's most notorious manhunts in digital history.</p>
                 
-                <p>What the perpetrator didn't expect was the fury of cat lovers worldwide—and their determination to bring him to justice.</p>
+                <p>The footage showed a hooded figure suffocating two kittens with a vacuum cleaner bag—a horrific act that would immediately galvanize cat lovers and internet users worldwide into action.</p>
+                
+                <p>What the perpetrator didn't expect was the fury and determination of the online community. Within hours of the video's discovery, an army of digital detectives had mobilized across forums, social media platforms, and specialized investigation groups.</p>
+                
+                <p>This case would become more than just seeking justice for two innocent animals—it evolved into a testament to the power of collective intelligence and the dark consequences of internet infamy.</p>
             </div>
 
-            <div class="visual-section">
-                <div class="investigation-board">
-                    <div class="evidence-item">VIDEO EVIDENCE<br>Dec 2010</div>
-                    <div class="evidence-item">SUSPECT<br>UNKNOWN</div>
-                    <div class="evidence-item">INTERNET SEARCH<br>WORLDWIDE</div>
-                    <div class="evidence-item">CAT LOVERS<br>UNITE</div>
-                    <div class="evidence-item">MANHUNT<br>BEGINS</div>
-                </div>
-                
-                <div class="photos-section">
-                    <div class="photo-placeholder"></div>
-                    <div class="photo-placeholder"></div>
-                    <div class="photo-placeholder"></div>
+            <div class="photo-box">
+                <img src="https://i.postimg.cc/ZWj55Q46/image.jpg" style="width:100%; height:100%; object-fit:cover; filter: grayscale(100%) contrast(1.2) brightness(0.9);" />
+                <div class="photo-caption">
+                    Digital forensics experts analyze frame-by-frame footage for identifying clues.
                 </div>
             </div>
-        </main>
+        </div>
 
-        <section class="cta-section">
-            <a href="#" class="cta-button" onclick="nextPage()">Begin Investigation</a>
-            <p class="warning-text">Warning: This story contains disturbing content</p>
-        </section>
+        <div class="bottom-section">
+            <a href="#" class="continue-reading" onclick="nextPage()">Continue Investigation</a>
+            
+            <div class="disclaimer">
+                <strong>Content Warning:</strong> This investigation contains graphic descriptions of animal cruelty and violence. The story involves disturbing content and mature themes. Reader discretion is strongly advised.
+            </div>
+        </div>
     </div>
 
     <script>
         function nextPage() {
-            // Placeholder for navigation to next page
             alert('Next page functionality would be implemented here');
         }
-
-        // Add some interactive elements
-        document.addEventListener('DOMContentLoaded', function() {
-            const evidenceItems = document.querySelectorAll('.evidence-item');
-            
-            evidenceItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    this.style.transform = 'rotate(0deg) scale(1.2)';
-                    this.style.zIndex = '20';
-                    this.style.background = '#ffeb3b';
-                    this.style.color = '#000';
-                    
-                    setTimeout(() => {
-                        this.style.transform = '';
-                        this.style.zIndex = '';
-                        this.style.background = '';
-                        this.style.color = '';
-                    }, 2000);
-                });
-            });
-
-            // Add typing effect to title
-            const title = document.querySelector('.title');
-            const text = title.textContent;
-            title.textContent = '';
-            
-            let i = 0;
-            const typeInterval = setInterval(() => {
-                title.textContent += text[i];
-                i++;
-                if (i >= text.length) {
-                    clearInterval(typeInterval);
-                }
-            }, 100);
-        });
     </script>
 </body>
 </html>
